@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <nav id="navbar">
+      <header>JavaScript Promises</header>
+      <ul>
+        <li><a class="nav-link" href="#Introduction">Introduction</a></li>
+        <li><a class="nav-link" href="#Overview">Overview</a></li>
+        <li>
+          <a class="nav-link" href="#Creating_a_Promise">Creating a Promise</a>
+        </li>
+        <li>
+          <a class="nav-link" href="#Then,_Catch,_and_Finally"
+            >Then, Catch, and Finally</a
+          >
+        </li>
+        <li>
+          <a class="nav-link" href="#Chaining_Promises">Chaining Promises</a>
+        </li>
+        <li><a class="nav-link" href="#Error_Handling">Error Handling</a></li>
+        <li><a class="nav-link" href="#Async/Await">Async/Await</a></li>
+        <li>
+          <a class="nav-link" href="#Additional_Features"
+            >Additional Features</a
+          >
+        </li>
+        <li><a class="nav-link" href="#Conclusion">Conclusion</a></li>
+      </ul>
+    </nav>
+    <main id="main-doc">
+      <section class="main-section" id="Introduction">
+        <header>Introduction</header>
+        <article>
+          <p>
+            JavaScript promises are a powerful abstraction for handling
+            asynchronous operations in JavaScript. They provide a more flexible
+            and composable alternative to older callback-based approaches. Below
+            is a light technical documentation on JavaScript Promises, covering
+            their basic usage, creating promises, chaining, error handling, and
+            some additional features.
+          </p>
+        </article>
+      </section>
+      <section class="main-section" id="Overview">
+        <header>Overview</header>
+        <article>
+          <p>
+            A Promise in JavaScript represents an operation that hasn't
+            completed yet, but is expected to in the future. Promises are used
+            to handle the result of an asynchronous operation, such as fetching
+            data from a server, reading files in Node.js, or executing a
+            time-consuming computation in a web app. They allow developers to
+            write cleaner, more readable asynchronous code by providing a
+            simpler alternative to callbacks.
+          </p>
+        </article>
+      </section>
+      <section class="main-section" id="Creating_a_Promise">
+        <header>Creating a Promise</header>
+        <article>
+          <p>
+            A promise is created using the Promise constructor which takes a
+            function (executor function) as its argument. The executor function
+            is called immediately by the Promise implementation, and it receives
+            two functions as parameters: resolve and reject.
+          </p>
+          <ul>
+            <li>
+              <p>
+                <code>`resolve`</code> is called with the resolved value of the
+                promise.
+              </p>
+            </li>
+            <li>
+              <p>
+                <code>`reject`</code> is called with the reason why the promise
+                cannot be fulfilled.
+              </p>
+            </li>
+          </ul>
+          <pre>
+const myPromise = new Promise((resolve, reject) => {
+  // Asynchronous operation code
+  if (/* operation is successful */) {
+    resolve(value); // Resolve the promise with value
+  } else {
+    reject(error); // Reject the promise with error
+  }
+});</pre
+          >
+        </article>
+      </section>
+      <section class="main-section" id="Then,_Catch,_and_Finally">
+        <header>Then, Catch, and Finally</header>
+        <article>
+          <p>
+            Promises provide the <code>`.then()`</code>,
+            <code>`.catch()`</code>, and <code>`.finally()`</code> methods for
+            handling fulfilled, rejected, and settled promises, respectively.
+          </p>
+          <ul>
+            <li>
+              <p>
+                <code>`.then()`</code> takes two arguments: a callback for a
+                success case, and another for the failure case (optional). Each
+                <code>`.then()`</code> returns a new promise, allowing them to
+                be chained.
+              </p>
+            </li>
+          </ul>
+          <pre>
+myPromise.then(
+  value => { /* handle fulfillment */ },
+  error => { /* handle rejection */ }
+);</pre
+          >
+          <ul>
+            <li>
+              <p>
+                <code>`.catch()`</code> is used to handle rejected cases
+                specifically. It's shorthand for
+                <code>`.then(null, rejectionFunction)`</code>.
+              </p>
+            </li>
+          </ul>
+          <pre>
+myPromise.catch(
+  error => { /* handle error */ }
+);</pre
+          >
+          <ul>
+            <li>
+              <p>
+                <code>`.finally()`</code> allows you to execute code regardless
+                of the promise's fate. It's useful for clean-up operations.
+              </p>
+            </li>
+          </ul>
+          <pre>
+myPromise.finally(() => {
+  // Code to run after promise is settled (either fulfilled or rejected)
+});</pre
+          >
+        </article>
+      </section>
+      <section class="main-section" id="Chaining_Promises">
+        <header>Chaining Promises</header>
+        <article>
+          <p>
+            Chaining is one of the key features of promises, enabling sequential
+            execution of asynchronous operations. The return value from a
+            <code>`.then()`</code> call is a new promise, which can be used for
+            further chaining.
+          </p>
+          <pre>
+doSomething()
+  .then(result => doSomethingElse(result))
+  .then(newResult => doThirdThing(newResult))
+  .catch(error => console.error(error));</pre
+          >
+        </article>
+      </section>
+      <section class="main-section" id="Error_Handling">
+        <header>Error Handling</header>
+        <article>
+          <p>
+            Error handling in promises is streamlined. A rejection in any of the
+            promises in the chain will skip all subsequent
+            <code>`.then()</code> success callbacks until it finds a
+            <code>`.catch()`</code> handler.
+          </p>
+        </article>
+      </section>
+      <section class="main-section" id="Async/Await">
+        <header>Async/Await</header>
+        <article>
+          <p>
+            Introduced as a syntactic sugar over promises,
+            <code>`async/await`</code> makes asynchronous code look and behave a
+            little more like synchronous code. An <code>`async`</code> function
+            returns a promise, and the await keyword can be used to pause the
+            execution until the promise is resolved.
+          </p>
+          <pre>
+async function asyncFunction() {
+  try {
+    const result = await doSomething();
+    const newResult = await doSomethingElse(result);
+    return await doThirdThing(newResult);
+  } catch (error) {
+    console.error(error);
+  }
+}</pre
+          >
+        </article>
+      </section>
+      <section class="main-section" id="Additional_Features">
+        <header>Additional Features</header>
+        <article>
+          <p>
+            Promises have additional static methods such as
+            <code>`Promise.all()`</code>, <code>`Promise.race()`</code>,
+            <code>`Promise.allSettled()`</code>, and
+            <code>`Promise.any()`</code>, which provide powerful ways to work
+            with collections of promises.
+          </p>
+        </article>
+      </section>
+      <section class="main-section" id="Conclusion">
+        <header>Conclusion</header>
+        <article>
+          <p>
+            Promises are a fundamental part of modern JavaScript, making
+            asynchronous programming more manageable and code more readable. By
+            understanding how to create, chain, and handle errors in promises,
+            developers can write efficient and effective asynchronous code.
+          </p>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>
