@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="styles.css" rel="stylesheet" />
+    <title>Survey Form</title>
+  </head>
+  <body>
+    <div>    
+      <h1 id="title">Survey Form</h1>
+      <p id="description">How well do you know Jay-Z?</p>
+    </div>
+    <form id="survey-form">
+      <div class="form-field">
+        <label id="name-label" for="name">Full Name</label>
+        <input type="text" placeholder="Full Name" id="name" required>
+      </div>
+      <div class="form-field">
+        <label id="email-label" for="email">Email Address</label>
+        <input type="email" placeholder="Email Address" id="email" required>
+      </div>
+      <hr />
+      <div class="form-field">
+        <label id="number-label">First Album Release Year</label>
+        <input type="number" placeholder="First Album Release Year" id="number" required min="1990" max="2005">
+      </div>
+      <div class="form-field">
+        <label for="dropdown">First Album Title</label>
+        <select id="dropdown">
+          <option value="">--Select an option--</option>
+          <option value="reasonable-truth">Reasonable Truth</option>
+          <option value="the-blueprint">The Blueprint</option>
+          <option value="reasonable-doubt">Reasonable Doubt</option>
+          <option value="american-gangster">American Gangster</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label for="genre">Music Genre</label>
+        <input type="radio" name="genre" value="rnb" checked>RnB
+        <input type="radio" name="genre" value="trap">Trap
+        <input type="radio" name="genre" value="hiphop">Hip-Hop
+        <input type="radio" name="genre" value="reggae">Reggae
+      </div>
+      <div class="form-field">
+        <label for="artistes">Signed Artistes<label>
+        <input type="checkbox" name="rihanna" value="rihanna">Rihanna
+        <input type="checkbox" name="chris-brown" value="chris-brown">Chris Brown
+        <input type="checkbox" name="kanye-west" value="kanye-west">Kanye West
+        <input type="checkbox" name="meek-mill" value="meek-mill">Meek Mill
+        <input type="checkbox" name="rick-ross" value="rick-ross">Rick Ross
+      </div>
+      <div class="form-field">
+        <label for="thoughts">Thoughts on the Jay-Z brand<label>
+        <textarea name="thoughts" rows="5" cols="40"></textarea>
+      </div>
+      <div class="form-field">
+        <input type="submit" id="submit" value="Submit">
+      </div>
+    </form>
+  </body>
+</html>
