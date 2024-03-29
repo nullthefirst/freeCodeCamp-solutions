@@ -1,0 +1,51 @@
+body {
+  font-size: 16px;
+}
+
+a {
+  text-decoration: none;
+}
+
+#nav-bar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  width: 100%;
+  position: fixed;
+  top: 0;
+}
+
+.nav-link {
+  padding: 1rem;
+}
+
+#header-img {
+  margin-top: 5rem;
+}
+
+#form {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+
+h2,
+p {
+  text-align: center;
+}
+
+/*
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+  /* CSS */
+
+  a {
+    color: #639;
+  }
+}
