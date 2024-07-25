@@ -1,10 +1,10 @@
-const letters = "abcdefghijklmnopqrstuvwxyz";
+const letters = 'abcdefghijklmnopqrstuvwxyz';
 
 let alphabet = {};
 let nums = {};
 
 for (let i = 0; i < letters.length; i++) {
-  nums[i+1] = letters[i].toUpperCase();
+  nums[i + 1] = letters[i].toUpperCase();
   alphabet[letters[i].toUpperCase()] = i + 1;
 }
 
@@ -23,16 +23,16 @@ function decoder(value) {
 }
 
 function rot13(str) {
-  const messageHold = str.split("");
+  const messageHold = str.split('');
   let messageOutput = [];
 
   for (const info of messageHold) {
     messageOutput.push(specialChar(info) ? info : nums[decoder(alphabet[info])]);
   }
 
-  console.log(messageHold);
-  console.log(messageOutput);
+  // console.log(messageHold);
+  // console.log(messageOutput);
 
-  const message = messageOutput.join("");
+  const message = messageOutput.join('');
   return message;
 }
